@@ -2,9 +2,10 @@
 //获取应用实例
 const app = getApp()
 
-Page({
+Page({  //Page叫对象的字面量
   data: {
     motto: 'Hello World',
+    my:"mama",
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')

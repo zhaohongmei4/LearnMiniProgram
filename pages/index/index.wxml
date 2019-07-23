@@ -9,6 +9,6 @@
   </view>
   <view class="usermotto">
   <text>fdl</text>
-    <text class="user-motto">{{motto}}</text>
+    <text class="user-motto">{{my}}</text>
   </view>
 </view>
