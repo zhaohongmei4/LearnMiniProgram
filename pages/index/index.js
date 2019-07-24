@@ -1,6 +1,8 @@
 //index.js
 //获取应用实例
 const app = getApp()
+console.log(app.globalData.name)
+console.log(app.globalData.age)
 
 Page({  //Page叫对象的字面量
   data: {
@@ -14,6 +16,7 @@ Page({  //Page叫对象的字面量
     counter:0,
     my:"mama",
     userInfo: {},
+    list:[],
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
   
@@ -51,6 +54,25 @@ Page({  //Page叫对象的字面量
         }
       })
     }
+    const _this = this;
+    wx.request({
+      
+      url: 'http://123.207.32.32:8000/recommend',
+      // success:(res)=>{
+      //   console.log(res);
+      //   const data=res.data.data.list;
+      //   this.setData({
+      //     list:data
+      //   })
+      // }
+      //如果不用箭头，而用function  —this跟上面的this用法不一样
+      success:function(res){
+        const data = res.data.data.list;
+        _this.setData({
+           list:data
+         })
+      }
+    })
   },
   getUserInfo: function(e) {
     console.log(e)
@@ -69,5 +91,12 @@ Page({  //Page叫对象的字面量
     })
     
     
+  },
+  //监听页面滚动
+  onPageScroll(obj){
+    //console.log(obj)
+  },
+  onReachBottom(){
+    console.log("=============")
   }
 })
