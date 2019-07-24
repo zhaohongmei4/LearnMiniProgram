@@ -5,9 +5,17 @@ const app = getApp()
 Page({
   data: {
     motto: 'Hello World',
+    students: [
+
+      { id: 1, name: "李四", age: 14 },
+      { id: 2, name: "王五", age: 30 },
+      { id: 3, name: "张三", age: 30 },
+    ],
+    counter:0,
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+  
   },
   //事件处理函数
   bindViewTap: function() {
@@ -50,5 +58,15 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  tapName: function (event) {
+    console.log(event)
+  },
+  handleButtonClick(){
+    this.setData({//给页面中的值赋值
+      counter:this.data.counter+1
+    })
+    
+    
   }
 })
